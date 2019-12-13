@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+       
+
+        <link rel="stylesheet" type="text/css" href="../src/vendor//bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="../src/vendor/owl.carousel/assets/owl.carousel.min.css" />
+<link rel="stylesheet" type="text/css" href="../src/vendor/owl.carousel/assets/owl.theme.default.min.css" />
+<link rel="stylesheet" type="text/css" href="../src/vendor/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="../src/stylesheet.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css">
+<link rel="stylesheet" type="text/css" href="../src/vendor/jquery-seat-charts/jquery.seat-charts.css" />
+<link rel="stylesheet" type="text/css" href="../src/vendor/jquery-ui/jquery-ui.css" />
+       
+   
+      </head>
+    <body>
+        <div id="root">
+           
+        </div>
+      
+<style></style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../src/vendor/jquery-ui/jquery-ui.min.js"></script> 
+
+<script src="../src/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+<script src="../src/vendor/owl.carousel/owl.carousel.min.js"></script> 
+<script src="../src/vendor/bootstrap-spinner/bootstrap-spinner.js"></script> 
+<script src="../src/vendor/daterangepicker/moment.min.js"></script> 
+<script src="../src/vendor/daterangepicker/daterangepicker.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script src="../src/vendor/jquery-seat-charts/jquery.seat-charts.min.js"></script> 
+  <script>
+$(function() {
+ 'use strict';
+  // Hotels Check In Date
+  $('#hotelsCheckIn').daterangepicker({
+	singleDatePicker: true,
+	minDate: moment(),
+	autoUpdateInput: false,
+	}, function(chosen_date) {
+  $('#hotelsCheckIn').val(chosen_date.format('YYYY-MM-DD'));
+  });
+  
+  // Hotels Check Out Date
+  $('#hotelsCheckOut').daterangepicker({
+	singleDatePicker: true,
+	minDate: moment(),
+	autoUpdateInput: false,
+	}, function(chosen_date) {
+  $('#hotelsCheckOut').val(chosen_date.format('YYYY-MM-DD'));
+  });
+  // Flight Depart Date
+  $('#flightDepart').daterangepicker({
+	singleDatePicker: true,
+	minDate: moment(),
+	autoUpdateInput: false,
+	}, function(chosen_date) {
+  $('#flightDepart').val(chosen_date.format('YYYY-MM-DD'));
+  });
+  
+  // Flight Return Date
+  $('#flightReturn').daterangepicker({
+	singleDatePicker: true,
+	minDate: moment(),
+	autoUpdateInput: false,
+	}, function(chosen_date) {
+  $('#flightReturn').val(chosen_date.format('YYYY-MM-DD'));
+  });
+  
+  // Train Depart Date
+  $('#trainDepart').daterangepicker({
+	singleDatePicker: true,
+	minDate: moment(),
+	autoUpdateInput: false,
+	}, function(chosen_date) {
+  $('#trainDepart').val(chosen_date.format('YYYY-MM-DD'));
+  });
+  
+  // Bus Depart Date
+  $('#busDepart').daterangepicker({
+	singleDatePicker: true,
+  minDate: moment(),
+  locale: {
+            format: 'yyyy/mm/dd'
+        },
+	autoUpdateInput: false,
+	}, function(chosen_date) {
+
+  $('#busDepart').val(chosen_date.format('YYYY-MM-DD'));
+  console.log($('#busDepart').val());
+
+  });
+});
+</script> 
+       
+
+    </body>
+</html>
