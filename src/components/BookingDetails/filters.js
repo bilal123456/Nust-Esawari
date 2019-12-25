@@ -1,15 +1,39 @@
 import React, { Component } from 'react';
-
+import axios from 'axios'
 class Filters extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = {
+          filterOperators:[],
+          };
+    }
+
+
+    componentDidMount()
+    {
+      //Advanced Serch Bus Operator
+      axios({ method: 'GET',
+         url: "https://api.esawari.pk/api/v1/Transporters",
+          headers: { "authorization": "zafar:abc@123", "content-type":"application/json", }
+       }).then((res)=>{
+          console.log(res);
+           var filterOperators = res.data.value;
+          console.log("filterOperators",filterOperators);
+           this.setState({filterOperators});
+           console.log("filterOperators",filterOperators);
+       });
+
     }
     
 
 
     render() {
+      const filterOperatorsfilter = this.state.filterOperators.filter( function (transporter) {
+        return transporter.IsActive===true
+      });
+      console.log("filterOperatorsfilter",filterOperatorsfilter);
         return (
+          
             <React.Fragment>
                    
     
@@ -30,7 +54,7 @@ class Filters extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-3" style={{float:"left"}}>
+                {/* <div className="col-md-3" style={{float:"left"}}>
                   <div className="card-header" id="price">
                     <h5 className="mb-0"> <a href="#" className="collapse" data-toggle="collapse" data-target="#togglePrice" aria-expanded="true" aria-controls="togglePrice">Price</a> </h5>
                   </div>
@@ -42,7 +66,7 @@ class Filters extends Component {
                       <div id="slider-range"></div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="col-md-3" style={{float:"left"}}>
                   <div className="card-header" id="busType">
                     <h5 className="mb-0"> <a href="#" className="collapse" data-toggle="collapse" data-target="#togglebusType" aria-expanded="true" aria-controls="togglebusType">Bus Type</a> </h5>
@@ -50,49 +74,79 @@ class Filters extends Component {
                   <div id="togglebusType" className="collapse show" aria-labelledby="busType">
                     <div className="card-body">
                       <div className="custom-control custom-checkbox">
-                        <input type="checkbox" id="sleeper" name="busType" className="custom-control-input"/>
-                        <label className="custom-control-label" htmlFor="sleeper">Sleeper</label>
+                        <input  type="checkbox" id="sleeper" name="busType" className="custom-control-input"/>
+                        <label className="custom-control-label" htmlFor="sleeper">Ac</label>
                       </div>
                       <div className="custom-control custom-checkbox">
                         <input type="checkbox" id="seater" name="busType" className="custom-control-input"/>
-                        <label className="custom-control-label" htmlFor="seater">Seater</label>
+                        <label className="custom-control-label" htmlFor="seater">Non Ac</label>
                       </div>
-                      <div className="custom-control custom-checkbox">
-                        <input type="checkbox" id="semiseater" name="busType" className="custom-control-input"/>
-                        <label className="custom-control-label" htmlFor="semiseater">Semi-Seater</label>
-                      </div>
+                     
                     </div>
                   </div>
                 </div>
-                <div className="col-md-3" style={{float:"left"}}>
+                
+                <div className="col-md-3" style={{float:"left",overflow: "auto",overflowY:"scroll",height:"180px"}}>
                   <div className="card-header" id="busOperators">
                     <h5 className="mb-0"> <a href="#" className="collapse" data-toggle="collapse" data-target="#togglebusOperators" aria-expanded="true" aria-controls="togglebusOperators">Bus Operators</a> </h5>
                   </div>
                   <div id="togglebusOperators" className="collapse show" aria-labelledby="busOperators">
                     <div className="card-body">
-                      <div className="custom-control custom-checkbox">
-                        <input type="checkbox" id="akTour" name="busOperators" className="custom-control-input"/>
-                        <label className="custom-control-label" htmlFor="akTour">AK Tour &amp; Travels</label>
+                  {filterOperatorsfilter.map(s=>
+                  
+                      <div key={s.Id}  className="custom-control custom-checkbox">
+                        <input value={s.Id} type="checkbox" id="akTour" name="busOperators" className="custom-control-input"/>
+                <label className="custom-control-label" htmlFor="akTour">{s.TransporterName}</label>
                       </div>
-                      <div className="custom-control custom-checkbox">
-                        <input type="checkbox" id="vikasTravels" name="busOperators" className="custom-control-input"/>
-                        <label className="custom-control-label" htmlFor="vikasTravels">Vikas Travels</label>
-                      </div>
-                      <div className="custom-control custom-checkbox">
-                        <input type="checkbox" id="gujaratTravels" name="busOperators" className="custom-control-input"/>
-                        <label className="custom-control-label" htmlFor="gujaratTravels">Gujarat Travels</label>
-                      </div>
-                      <div className="custom-control custom-checkbox">
-                        <input type="checkbox" id="shrinathTravel" name="busOperators" className="custom-control-input"/>
-                        <label className="custom-control-label" htmlFor="shrinathTravel">Shrinath Travel Agency</label>
-                      </div>
-                      <div className="custom-control custom-checkbox">
-                        <input type="checkbox" id="indianTravels" name="busOperators" className="custom-control-input"/>
-                        <label className="custom-control-label" htmlFor="indianTravels">Indian Travels Agency</label>
-                      </div>
+                    
+                     
+                     
+                   
+                   )}
                     </div>
                   </div>
                 </div>
+               
+                <div className="col-md-3" style={{float:"left"}}>
+                  <div className="card-header" id="sortby">
+                    <h5 className="mb-0"> <a href="#" className="collapse" data-toggle="collapse" data-target="#togglePrice" aria-expanded="true" aria-controls="togglePrice">Price</a> </h5>
+                  </div>
+                  <div id="togglePrice" className="collapse show" aria-labelledby="price">
+                    <div className="card-body">
+                      <div style={{clear:"both"}}></div>
+                   <table>
+                     <thead></thead>
+                     <tbody>
+                   <tr>
+                       <td>                        <input id="radio" type="radio"/><span style={{paddingLeft:"10px"}}>Departure Time</span>
+</td>
+                     </tr>
+                     <tr>
+                       <td>                        <input id="radio" type="radio"/><span style={{paddingLeft:"10px"}}>Travel to Duration</span>
+</td>
+                     </tr>
+                     <tr>
+                       <td>                        <input id="radio" type="radio"/><span style={{paddingLeft:"10px"}}>Price</span>
+</td>
+                     </tr>
+                     </tbody>
+                     </table>
+                     <div className="custom-control custom-checkbox">
+                        <input  type="checkbox" id="sleeper" name="busType" className="custom-control-input"/>
+                        <label className="custom-control-label" htmlFor="sleeper">Ascending</label>
+                      </div>
+                      <div className="custom-control custom-checkbox">
+                        <input  type="checkbox" id="sleeper" name="busType" className="custom-control-input"/>
+                        <label className="custom-control-label" htmlFor="sleeper">Desending</label>
+                      </div>
+                   
+                        
+                      
+                      {/* <div id="slider-range"></div> */}
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </aside>

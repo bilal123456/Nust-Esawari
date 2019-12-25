@@ -295,6 +295,9 @@ $('.smooth-scroll a').on("click", function() {
 
 })(jQuery);
 	}
+
+
+	
     render() {
         return (
 			

@@ -4,7 +4,7 @@ class CancellationData extends Component {
     render() { 
         return ( 
             <React.Fragment>
-                 <div className="tab-pane fade" id="second" role="tabpanel" aria-labelledby="second-tab">
+                 <div className="tab-pane fade" id="third" role="tabpanel" aria-labelledby="third-tab">
                               <table className="table table-hover table-bordered bg-light">
                                 <thead>
                                   <tr>

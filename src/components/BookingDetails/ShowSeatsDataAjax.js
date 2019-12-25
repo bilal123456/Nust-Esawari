@@ -32,6 +32,17 @@ class ShowSeatsDataAjax extends Component {
       });
      
 
+
+      //tab active
+      $('#tabactive').click(function(e){
+        $('.nav-link').hasClass('active');
+        if(true)
+        {
+          $('.nav-link').removeClass('active');
+          $('#second-tab').addClass('active');
+        }
+      })
+
       //Per Seats data available
 
 
@@ -53,8 +64,8 @@ class ShowSeatsDataAjax extends Component {
             'aa_aa',
             'aa_aa',
             'aa_aa',
-            'aa_aa',
-            'aa_aa'
+            'bb_aa',
+            'cc_aa'
           ],
           seats: {
             a: {
@@ -62,15 +73,15 @@ class ShowSeatsDataAjax extends Component {
               classes : 'first-class', //your custom CSS class
               category: 'First Class'
             },
-            e: {
+            b: {
               price   : 140,
               classes : 'economy-class', //your custom CSS class
               category: 'Economy Class'
-            }	,
+            } ,
             s:{
               price:180,
               classes:'female-class'
-            }				
+            }       
           
           },
           naming : {
@@ -82,16 +93,18 @@ class ShowSeatsDataAjax extends Component {
           legend : {
             node : $('#legend'),
             items : [
-              // [ 'm', 'available',   'First Class' ],
+               [ 'b', 'available',   'female' ],
               // [ 'e', 'available',   'Economy Class'],
               [ 'f', 'available', 'Available']
-            ]					
+            ]         
           },
           click: function () {
 
           
             if (this.status() == 'available') {
+
               var malecounter = 1;
+              document.getElementsByClassName('next').disabled = false;
               console.log("this is malecounter value",malecounter);
              console.log("this is a id",this.settings.id);
             
@@ -127,20 +140,7 @@ class ShowSeatsDataAjax extends Component {
             //   'background' : 'black'
             //  })
               //let's create a new <li> which we'll add to the cart items
-              $('<li>'+this.data().category+' Seat # '+this.settings.label+': <b>$'+this.data().price+'</b> <a href="#" className="cancel-cart-item text-danger text-4"><i className="far fa-times-circle"></i></a></li>')
-                .attr('id', 'cart-item-'+this.settings.id)
-                .data('seatId', this.settings.id)
-                            .appendTo($cart);
-                console.log(this.data());
-                console.log(this.settings.label)
-                           console.log(this.data().category);
-                           console.log(this.settings.categpry);
-                           console.log(this.data().price);
-                           console.log(this.settings.id);
-              
-              
-              $counter.text(sc.find('selected').length+1);
-              $total.text(recalculateTotal(sc)+this.data().price);
+             
               
               return 'female selected';
 
@@ -236,7 +236,7 @@ class ShowSeatsDataAjax extends Component {
                           console.log(s1);
                           
                           
-            var myurl="";						
+            var myurl="";           
                           
    myurl = "https://api.esawari.pk/api/v2/SearchResult_Result?forweb=true&DateOfMonth="+dateofmonth+"&From="+s+"&To="+s1+"&ServiceCategoryId=1&SortColumn=ScheduleTime&SortOrder=ASC&PageNumber=1&PageSize=50";
   console.log(myurl);
@@ -325,26 +325,26 @@ class ShowSeatsDataAjax extends Component {
                       strHtml = strHtml + ' <i class="fas fa-film" title="Movie"></i> ';
                   }
                   if (amenityIds[i] == 5) {//reading light
-                      //strHtml = strHtml + ' <i class="fas fa-film" title="Reading Light"></i> ';
+                      //strHtml = strHtml + ' <i className="fas fa-film" title="Reading Light"></i> ';
                   }
                   if (amenityIds[i] == 6) {//Track my bus
                       strHtml = strHtml + ' <i class="fas fa-bus" title="Tracking"></i> ';
                   }
                   if (amenityIds[i] == 7) {//Emergency exit
-                      //strHtml = strHtml + ' <i class="fas fa-film" title="Emergency Exit"></i> ';
+                      //strHtml = strHtml + ' <i className="fas fa-film" title="Emergency Exit"></i> ';
                   }
                   if (amenityIds[i] == 8) {//Fire Extinguisher
                       
                       strHtml = strHtml + ' <i class="fas fa-fire-extinguisher" title="Fire Extinguisher"></i> ';
                   }
                   if (amenityIds[i] == 9) {//Seat Formation
-                      //strHtml = strHtml + ' <i class="fas fa-film"  title="Seat Formation"></i> ';
+                      //strHtml = strHtml + ' <i className="fas fa-film"  title="Seat Formation"></i> ';
                   }
                   if (amenityIds[i] == 10) {//Rest Room
-                      //strHtml = strHtml + ' <i class="fas fa-film" title="Rest Room"></i> ';
+                      //strHtml = strHtml + ' <i className="fas fa-film" title="Rest Room"></i> ';
                   }
                   if (amenityIds[i] == 11) {//Back Seat TV
-                      //strHtml = strHtml + ' <i class="fas fa-film" title="Back Seat TV"></i> ';
+                      //strHtml = strHtml + ' <i className="fas fa-film" title="Back Seat TV"></i> ';
                   }
                   if (amenityIds[i] == 12) {//Lunch Box
                       strHtml = strHtml + ' <i class="fas fa-utensils" title="Lunch Box"></i>';
@@ -353,13 +353,13 @@ class ShowSeatsDataAjax extends Component {
                       strHtml = strHtml + ' <i class="fas fa-prescription-bottle" title="Cold drink"></i> ';
                   }
                   if (amenityIds[i] == 14) {//blanket
-                      //strHtml = strHtml + ' <i class="fas fa-film" title="Blanket"></i> ';
+                      //strHtml = strHtml + ' <i className="fas fa-film" title="Blanket"></i> ';
                   }
                   if (amenityIds[i] == 15) {//Satellite TV
-                      //strHtml = strHtml + ' <i class="fas fa-film"  title="Satellite TV"></i> ';
+                      //strHtml = strHtml + ' <i className="fas fa-film"  title="Satellite TV"></i> ';
                   }
                   if (amenityIds[i] == 16) { //AC
-                      //strHtml = strHtml + ' <i class="fas fa-film" title="AC"></i> ';
+                      //strHtml = strHtml + ' <i className="fas fa-film" title="AC"></i> ';
                   }
                   if (amenityIds[i] == 17) {//Host Bell
                       strHtml = strHtml + ' <i class="fas fa-bell" title="Host Bell"></i>';
@@ -382,8 +382,8 @@ class ShowSeatsDataAjax extends Component {
         $('#tab_default_3' + id).slideUp('slow');
 
             var strHtml = "";
-            strHtml = strHtml + '<div class="row amenities-row" id="amanity-row">';
-            strHtml = strHtml + '<div class="col-sm-12">';
+            strHtml = strHtml + '<div className="row amenities-row" id="amanity-row">';
+            strHtml = strHtml + '<div className="col-sm-12">';
             strHtml = strHtml + '<label>Amenities</label>';
             strHtml = strHtml + '</div>';
             strHtml = strHtml + '<span style="color:black">';
@@ -392,88 +392,88 @@ class ShowSeatsDataAjax extends Component {
                 for (var i = 0; i < amenityIds.split(',').length; i++)
                 {
                     if (amenityIds[i] == 1) {
-                        strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        strHtml = strHtml + '<i class="fas fa-wifi"></i> Wifi';
+                        strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        strHtml = strHtml + '<i className="fas fa-wifi"></i> Wifi';
                         strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 2) {
-                        strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
+                        strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
                         strHtml = strHtml + ' <i className="fas fa-cocktail"></i> Water';
                         strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 3) {
-                        strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        strHtml = strHtml + '<i class="fas fa-charging-station"></i> Charging Point';
+                        strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        strHtml = strHtml + '<i className="fas fa-charging-station"></i> Charging Point';
                         strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 4) {
-                        strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        strHtml = strHtml + '<i class="fas fa-film"></i> Movie';
+                        strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        strHtml = strHtml + '<i className="fas fa-film"></i> Movie';
                         strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 5) {//reading light
-                        //strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        //strHtml = strHtml + '<i class="fas fa-film"></i> Movie';
+                        //strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        //strHtml = strHtml + '<i className="fas fa-film"></i> Movie';
                         //strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 6) {//Track my bus
-                        strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        strHtml = strHtml + '<i class="fas fa-bus"></i> Track Bus';
+                        strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        strHtml = strHtml + '<i className="fas fa-bus"></i> Track Bus';
                         strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 7) {//Emergency exit
-                        //strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        //strHtml = strHtml + '<i class="fas fa-film"></i> Movie';
+                        //strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        //strHtml = strHtml + '<i className="fas fa-film"></i> Movie';
                         //strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 8) {//Fire Extinguisher
-                        strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        strHtml = strHtml + '<i class="fas fa-fire-extinguisher"></i> Fire Extinguisher';
+                        strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        strHtml = strHtml + '<i className="fas fa-fire-extinguisher"></i> Fire Extinguisher';
                         strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 9) {//Seat Formation
-                        //strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        //strHtml = strHtml + '<i class="fas fa-film"></i> Movie';
+                        //strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        //strHtml = strHtml + '<i className="fas fa-film"></i> Movie';
                         //strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 10) {//Rest Room
-                        //strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        //strHtml = strHtml + '<i class="fas fa-film"></i> Movie';
+                        //strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        //strHtml = strHtml + '<i className="fas fa-film"></i> Movie';
                         //strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 11) {//Back Seat TV
-                        //strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        //strHtml = strHtml + '<i class="fas fa-film"></i> Movie';
+                        //strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        //strHtml = strHtml + '<i className="fas fa-film"></i> Movie';
                         //strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 12) {//Lunch Box
-                        strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        strHtml = strHtml + '<i class="fas fa-utensils"></i> Lunch Box';
+                        strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        strHtml = strHtml + '<i className="fas fa-utensils"></i> Lunch Box';
                         strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 13) {
-                        strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        strHtml = strHtml + '<i class="fas fa-prescription-bottle"></i> Cold drink';
+                        strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        strHtml = strHtml + '<i className="fas fa-prescription-bottle"></i> Cold drink';
                         strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 14) {//blanket
-                        //strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        //strHtml = strHtml + '<i class="fas fa-film"></i> Movie';
+                        //strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        //strHtml = strHtml + '<i className="fas fa-film"></i> Movie';
                         //strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 15) {//Satellie TV
-                        //strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        //strHtml = strHtml + '<i class="fas fa-film"></i> Movie';
+                        //strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        //strHtml = strHtml + '<i className="fas fa-film"></i> Movie';
                         //strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 16) { //AC
-                        //strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        //strHtml = strHtml + '<i class="fas fa-film"></i> Movie';
+                        //strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        //strHtml = strHtml + '<i className="fas fa-film"></i> Movie';
                         //strHtml = strHtml + '</div>';
                     }
                     if (amenityIds[i] == 17) {//Host Bell
-                        strHtml = strHtml + '<div class="col-xs-6 col-sm-3 col-md-3">';
-                        strHtml = strHtml + '<i class="fas fa-bell"></i> Host Bell';
+                        strHtml = strHtml + '<div className="col-xs-6 col-sm-3 col-md-3">';
+                        strHtml = strHtml + '<i className="fas fa-bell"></i> Host Bell';
                         strHtml = strHtml + '</div>';
                     }
                     
@@ -503,7 +503,48 @@ class ShowSeatsDataAjax extends Component {
          
           var sd = e.currentTarget;
           console.log("sd",sd);
+          //get value for the booking details
           var data = sd.getAttribute('data-id');
+          var TransporterName= sd.getAttribute('data-transportername');
+          var ServiceType = sd.getAttribute('data-servicetype');
+          var scheduletime = sd.getAttribute('data-scheduletime');
+          var destinationtime = sd.getAttribute('data-destinationtime');
+          var timetohour = sd.getAttribute('data-timetohour');
+          var price = sd.getAttribute('data-price');
+          var servicecharges= sd.getAttribute('data-servicecharges');
+
+
+          //Set value from the booking Detail
+          document.getElementById('seatno').value = data;
+          document.getElementById('transportname').value = TransporterName;
+          document.getElementById('servicetype').value = ServiceType;
+          document.getElementById('scheduletime').value = scheduletime;
+          document.getElementById('destinationtime').value = destinationtime;
+          document.getElementById('timetohour').value = timetohour;
+          document.getElementById('price').value = price;
+          document.getElementById('servicecharges').value = servicecharges;
+
+
+          $('#transportername').text($('#transportname').val());
+          $('#getservicetype').text($('#servicetype').val());
+          $('#getscheduletime').text($('#scheduletime').val());
+          $('#getdestinationtime').text($('#destinationtime').val());
+          $('#gettimetohour').text($('#timetohour').val());
+          $('#getprice').text("RS "+$('#price').val()+"/- ");
+          //remove %20 from input field
+
+          var citicstta= $('#text2').val();
+           var citicstta2 = citicstta.replace("%20", " ");
+             var ss1 = citicstta2.replace("%20"," ");
+
+             var citicstta1= $('#text3').val();
+             var citicstta22 = citicstta1.replace("%20", " ");
+               var ss3 = citicstta22.replace("%20"," ");
+
+          $('#getfromtext').val(ss1);
+          $('#gettotext').val(ss3);
+          console.log("TransporterName",TransporterName);
+          console.log("ServiceType",ServiceType);
           console.log(data);
           var getcityid = document.getElementById("cityidget").value;
           $('#getpickedanddropdata').val(data);
@@ -537,8 +578,9 @@ class ShowSeatsDataAjax extends Component {
             <React.Fragment>
                
               <div id="ModifyData">
+               
                     {this.state.allSeats.map(seats=><div className="bus-list" key={seats.id}>
-                    
+                      
                 <div className="bus-item">
 
                   <div className="row align-items-sm-center flex-row py-4 px-3">
@@ -550,7 +592,7 @@ class ShowSeatsDataAjax extends Component {
                     <div className="col col-sm-3 text-center d-none d-sm-block time-info"> <span className="text-3 duration">{seats.NoOfSeats} Available</span> <small className="text-muted d-block">{seats.Description}</small> </div>
                     <div className="col-12 col-sm-3 align-self-center text-right text-sm-center mt-2 mt-sm-0">
                       <div className="d-inline-block d-sm-block text-dark text-5 price mb-sm-1">RS {seats.Price}</div>
-                      <a onClick={this.Getdata} id="seatmodalopen"  href="#" data-id={seats.id} className="btn btn-sm btn-outline-primary shadow-none" data-toggle="modal"><i className="fas fa-ellipsis-h d-none d-sm-block d-lg-none" data-toggle="tooltip" title="Select Seats"></i> <span className="d-block d-sm-none d-lg-block">Select Seats</span></a> </div>
+                      <a data-servicecharges={seats.ServiceCharges} onClick={this.Getdata} data-price={seats.Price} data-timetohour={this.MinutesToHHMM(seats.TotalTravelTime)} id="seatmodalopen"  href="#" data-scheduletime={this.formatAMPM(seats.ScheduleTime)} data-destinationtime={this.GetDestinationDateTime(seats.ScheduleDate,seats.ScheduleTime,seats.TotalTravelTime)} data-transportername={seats.TransporterName} data-servicetype={seats.ServiceType}  data-id={seats.id} className="btn btn-sm btn-outline-primary shadow-none" data-toggle="modal"><i className="fas fa-ellipsis-h d-none d-sm-block d-lg-none" data-toggle="tooltip" title="Select Seats"></i> <span className="d-block d-sm-none d-lg-block">Select Seats</span></a> </div>
                       
                   </div>
                 </div>
@@ -576,17 +618,18 @@ class ShowSeatsDataAjax extends Component {
                       </div>
                       <div className="modal-body">
                         <div className="bus-details">
-                          {/* <BookingDetails showdata={this.state.allSeats}/> */}
+                        {/* showdata={this.state.allSeats} */}
+                          <BookingDetails />
                           <ul className="nav nav-tabs" id="myTab" role="tablist">
                             <li className="nav-item"> <a className="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">Available Seats</a> </li>
-                            <li className="nav-item"> <a className="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="third" aria-selected="false">Cancellation Fee</a> </li>
-                            <li className="nav-item"> <a className="nav-link" id="third-tab" data-toggle="tab" href="#third" role="tab" aria-controls="second" aria-selected="false">Boarding Point</a> </li>
+                            <li className="nav-item"> <a className="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="third" aria-selected="false">Boarding Point</a> </li>
+                            <li className="nav-item"> <a className="nav-link" id="third-tab" data-toggle="tab" href="#third" role="tab" aria-controls="second" aria-selected="false">Cancellation Fee</a> </li>
                           </ul>
                           <div className="tab-content my-3" id="myTabContent">
                             <div className="tab-pane fade show active" id="first" role="tabpanel" aria-labelledby="first-tab">
                               <div className="row">
                                 <div className="col-12 col-lg-6 text-center">
-                                  <p className="text-muted text-1">Click on Seat to select/ deselect</p>
+                                  {/* <p className="text-muted text-1">Click on Seat to select/ deselect</p> */}
                                   <div id="seat-map">
                                     <div className="front-indicator">Front</div>
                                   </div>
@@ -599,7 +642,8 @@ class ShowSeatsDataAjax extends Component {
                                     <ul id="selected-seats">
                                     </ul>
                                     <div className="d-flex bg-light-4 px-3 py-2 mb-3">Total Fare: <span className="text-dark text-5 font-weight-600 ml-2">$<span id="total">0</span></span></div>
-                                    <button className="btn btn-primary btn-block">Continue</button>
+                                    <a className="nav-link show" id="tabactive" data-toggle="tab" href="#second" role="tab" aria-controls="third" aria-selected="true">Boarding Point</a>
+                                    <button id="#second-tab" disabled="disabled" className="btn btn-primary btn-block next">Continue</button>
                                   </div>
                                 </div>
                               </div>

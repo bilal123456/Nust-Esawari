@@ -1,17 +1,37 @@
 import React, { Component } from 'react';
+
 class BookingDetails extends Component {
     state = {  }
+    componentDidMount()
+    {
+        //get from name and get to name from search creteria 
+       // document.getElementById('text2').value = document.getElementById('getfromtext').value;
+        
+       
+    }
     render() { 
         return ( 
             <>
-            {/* {this.props.showdata.map(seats=><div className="row align-items-sm-center flex-row mb-4" key={seats.id}>
+            <input type="text" id="seatno"/>
+            <input type="text" id="transportname"/>
+            <input type="text" id="servicetype"/>
+            <input type="text" id="scheduletime"/>
+            <input type="text" id="destinationtime"/>
+            <input type="text" id="timetohour"/>
+            <input type="text" id="price"/>
+            <input type="hidden" id="servicecharges"/>
+            <input type="hidden" id="getfromtext"/>
+            <input type="hidden" id="gettotext"/>
+            <div className="row align-items-sm-center flex-row mb-4">
             
-                            <div className="col col-sm-3"> <span className="text-4 text-dark operator-name"></span> <span className="text-muted d-block ServiceType"></span> </div>
-                            <div className="col col-sm-3 text-center time-info"> <span className="text-5 text-dark ScheduleTime"></span> <small className="text-muted d-block">Mumbai</small> </div>
-                            <div className="col col-sm-3 text-center d-none d-sm-block time-info"> <span className="text-3 duration">06h 32m</span> <small className="text-muted d-block NoOfSeats"></small> </div>
-                            <div className="col col-sm-3 text-center time-info"> <span className="text-5 text-dark">05:15</span> <small className="text-muted d-block">Surat</small> </div>
+                            <div className="col col-sm-4"> <span className="text-4 text-dark operator-name" id="transportername"></span> <span className="text-muted d-block ServiceType" id="getservicetype"></span> </div>
+
+                            <div className="col col-sm-4  text-center time-info" style={{position:"relative",top:"5px"}}>  <span className="text-5 text-dark ScheduleTime" id="getscheduletime"></span><i className="fas fa-arrow-right" aria-hidden="true"></i>  <small className="text-5 text-dark ScheduleTime" id="getdestinationtime"></small> <span className="text-muted d-block ServiceType" id="gettimetohour"></span> </div>
+                            <div className="col col-sm-4 text-center time-info" style={{position:"relative",top:"5px"}}> <span className="text-5 text-dark" id="getprice"></span> <small className="text-muted d-block"></small> </div>
                           </div>
-            )} */}
+
+                          {/* <MainContent/> */}
+           
             </>
          );
     }

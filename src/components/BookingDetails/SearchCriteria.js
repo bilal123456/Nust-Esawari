@@ -102,31 +102,35 @@ class SearchCriteria extends Component {
             <React.Fragment>
               <input id="autosearchfrom" type="hidden"/>
               <input id="autosearchto" type="hidden"/>
-               <div className="row">
-          <div className="col mb-2">
+               <div className="row" style={{position:"relative",left:"25px"}}>
+          <div className="col-md-12">
            
               <div className="form-row">
-                <div className="col-md-6 col-lg form-group">
+                <div className="col-md-3 col-lg-3 form-group">
                   
                   <input type="text" className="form-control" id="busFrom" required placeholder="From" style={{lineHeight:"8px",border:"1px solid #444"}}/>
                   <div id="autosearch" style={{display:"none"}}>
                   <Autocomplete/>
                   </div>
-                  <span className="icon-inside"><i className="fas fa-map-marker-alt" style={{position:"relative",top:"-22px"}}></i></span> 
+                  <span className="icon-inside"><i className="fas fa-map-marker-alt" style={{position:"relative",top:"0px",left:"10px"}}></i></span> 
                  </div>
-                <div className="col-md-6 col-lg ">
+                <div className="col-md-3 col-lg-3 ">
                   <input type="text" className="form-control" id="busTo" required placeholder="To" style={{lineHeight:"8px",border:"1px solid #444"}}/>
                   <div id="autosearchs" style={{display:"none"}}>
                   <Multiplecities/>
 
                   
                   </div>
-                  <span className="icon-inside"><i className="fas fa-map-marker-alt" style={{position:"relative",top:"-30px"}}></i></span> 
+                  <span className="icon-inside"><i className="fas fa-map-marker-alt" style={{position:"relative",top:"-8px"}}></i></span> 
 
                   </div>
-                <div className="col-md-4 col-lg form-group">
-                  <input id="busDepart" type="text" className="form-control" required placeholder="Depart Date" style={{lineHeight:"8px",border:"1px solid #444"}}/>
-                  <span className="icon-inside"><i className="far fa-calendar-alt" style={{position: "absolute",top: "-20px"}}></i></span> </div>
+                <div className="col-md-3 col-lg-3 form-group">
+                  <input id="busDepart" type="text" className="form-control" required placeholder="Depart Date" style={{lineHeight:"8px",border:"1px solid #444",borderRadius: "0px"}}/>
+                  <span className="icon-inside"><i className="far fa-calendar-alt" style={{position: "absolute",top: "0px"}}></i></span> </div>
+                  <button id="modify" style={{display:'block',position:"relative",top:"-10px"}} className="btn btn-sm btn-primary m-2" type="submit">Modify</button>
+                  <button  id="Search"  onClick={this.SearchCriteria} className="btn btn-sm btn-info m-2" style={{display:"none",position:"relative",top:"-10px"}} >Search</button>
+                 
+             <a id="toggleadd" style={{position:"relative",top:"10px"}} href="#">Advance Search</a>
                 {/* <div className="col-md-4 col-lg travellers-class form-group">
                   <input type="text" id="busTravellersClass"  className="travellers-class-input form-control" name="bus-travellers-class" placeholder="Seats"  required />
                   <span className="icon-inside"><i className="fas fa-caret-down" style={{position: "absolute",top: "-15px"}}></i></span>
@@ -150,12 +154,9 @@ class SearchCriteria extends Component {
                     <button className="btn btn-primary btn-block submit-done" type="button">Done</button>
                   </div>
                 </div> */}
-                <div className="col-md-7 col-lg form-group">
+                <div className="col-md-3 col-lg form-group">
                   
-                  <button id="modify" style={{display:'block'}} className="btn btn-sm btn-primary m-2" type="submit">Modify</button>
-                  <button  id="Search"  onClick={this.SearchCriteria} className="btn btn-sm btn-info m-2" style={{display:"none"}} >Search</button>
                  
-                  <button id="toggleadd" className="btn btn-sm btn-danger"><a>Advance Search</a></button>
                 </div>
               </div>
          

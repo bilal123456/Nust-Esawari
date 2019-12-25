@@ -29,15 +29,13 @@ class App extends Component {
 			
 
             <BrowserRouter>
-             <div>
-			
+             
 				 <Route exact path="/" component={Home}/>
 				 
 				 <Route path="/books" component={BookingDetail}/>
 				 <Route path="/comfirmDetails" component={Comfirm}/>
 				 
 				
-			 </div>
 			 </BrowserRouter>
 			
         );
